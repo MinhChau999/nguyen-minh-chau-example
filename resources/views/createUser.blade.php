@@ -29,60 +29,26 @@
       </ul>
     </div>
   </nav>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Created at</th>
-        <th scope="col">Actiton</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{-- <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr> --}}
-    @foreach($data as $item)
-      <tr>
-          <th scope="row"></th>
-          <td>{{$item->name}}</td>
-          <td>{{$item->email}}</td>
-          <td>{{$item->created_at}}</td>
-          <td><button>Edit</button><button>Delete</button></td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
 
-  {{-- pagination --}}
-  <div class="d-flex justify-content-center">
-    {{ $data->onEachSide(2)->links() }}
+  <div class="col-md-4 mb-3">
+      <form method="POST" action="{{route('store')}}">
+          @csrf
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Name</label>
+              <input type="text" class="form-control" name="name">
+          </div>
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password">
+          </div>
+          <button type="submit">Create</button>
+          <button type="button">Cancel</button>
+      </form>
   </div>
-  {{-- <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item 
-        @if($data->currentPage() == 1)
-          disabled
-        @endif
-        ">
-        <a class="page-link" href="{{$data->previousPageUrl()}}">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="{{$data->url(1)}}">1</a></li>
-      <li class="page-item active"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item
-      @if($data->currentPage() == $data->lastPage())
-          disabled
-      @endif
-      ">
-        <a class="page-link" href="{{$data->nextPageUrl()}}">Next</a>
-      </li>
-    </ul>
-  </nav> --}}
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

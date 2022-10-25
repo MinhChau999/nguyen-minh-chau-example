@@ -20,5 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/processLogin', [AuthController::class, 'processLogin'])->name('processLogin');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/processRegister', [AuthController::class, 'processRegister'])->name('processRegister');
 Route::get('/user', [UserController::class, 'user'])->name('user');
+Route::get('/createUser', [UserController::class, 'createUser'])->name('createUser');
+Route::post('/store', [UserController::class, 'store'])->name('store');

@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             $arr[] = [
                 'name'     => $faker->firstName . ' ' . $faker->lastName,
                 'email' => $faker->email,
-                'password' => $faker->password,
+                'password' => bcrypt('1'),
+                'created_at' => $faker->dateTimeBetween('-1 year', now())
             ];
         }
         
